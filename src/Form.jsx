@@ -53,7 +53,7 @@ function Form() {
         </button>
       </div>
       <h1 className="font-mono text-3xl p-2 m-2 font-semibold">{`Hi, ${loadinguser ? "loading.." : loginName?.split(' ')[0]}`}</h1>
-      <h1 className="font-mono text-3xl p-2 m-2 font-semibold">Feed Your Data</h1>
+      <h1 className="font-mono text-3xl p-2 m-2 font-semibold">Enter Your Data</h1>
       <input
         type="text"
         placeholder="Your Name"
