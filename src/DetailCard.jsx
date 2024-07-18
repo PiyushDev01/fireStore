@@ -1,54 +1,63 @@
-import React, { useState } from 'react'
-import { db } from './firebase.js'
-
-import { collection, getDocs } from "firebase/firestore"; 
-
-
-
+import React, { useEffect, useState } from 'react';
+import { db } from './firebase.js';
+import { collection, getDocs } from "firebase/firestore";
+import { Link } from 'react-router-dom';
 
 function DetailCard() {
-        
-    const [fetchData, setFetchData] = useState([]);
-    const [data, setData] = useState(false);
-    
-        const getData = async () => {
-            const querySnapshot = await getDocs(collection(db, "users"));
-            const fetchData = [];
-            querySnapshot.forEach((doc) => {
-                fetchData.push({id: doc.id, name: doc.data().name, phone: doc.data().phone, address: doc.data().address});
-            });
-            setFetchData(fetchData);
-            setData(!data);
-        }
+  const [fetchData, setFetchData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-        const hidedata = () => {
-            setData(!data);
-            setFetchData([]);
-        }
-        
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "mainData"));
+        const data = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+        setFetchData(data);
+      } catch (e) {
+        console.error("Error fetching documents: ", e);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchData();
+  }, []); // Empty dependency array to run the effect only once on mount
 
-return (
+  return (
     <>
+      <center>
+        <Link to="/form">
+          <button className='w-fit px-4 py-2 bg-slate-900 rounded-full shadow-xl'>
+            Back
+          </button>
+        </Link>
+      </center>
 
-    { !data ?     <button className='bg-blue-700 rounded-xl py-2 px-4 m-2' onClick={getData} >Fetch data </button> : (<button className='bg-blue-700 rounded-xl py-2 px-4 m-2' onClick={hidedata} >hide data </button>)}
-
-    <div id="datacontainer" className=' md:m-8 flex justify-center flex-wrap ' >
-    {
-        fetchData.map((data)=>{
-            return (
-                <div key={data.id} className='m-2 p-4 text-left shadow-xl  bg-zinc-900 text-slate-100 md:min-w-60 md:w-fit w-[80%] md:min-h-32 flex flex-col justify-center rounded-lg'>
-                    <h1 className=' text-orange-500'> <span className=' text-sky-500' >Name:</span>   {data.name}</h1> 
-                    <h1> <span className=' text-sky-500' >Phone No.:</span>  {data.phone}</h1>
-                    <h1> <span className=' text-sky-500' >Address:</span>  {data.address}</h1>
-                </div>
-            )})
-        }
-    </div>
-
-    
-    </>) // Add a closing parenthesis after the opening tag to fix the syntax error.
-    
+      <div id="datacontainer" className='md:m-8 flex justify-center flex-wrap'>
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          fetchData.length === 0 ? (
+            <h1>No data available.</h1>
+          ) : (
+            fetchData.map((data) => (
+              <div key={data.id} className='m-2 p-4 text-left shadow-xl bg-zinc-900 text-slate-100 md:min-w-60 md:w-fit w-[80%] md:min-h-32 flex flex-col justify-center rounded-lg'>
+                <h1 className='text-orange-500'>
+                  <span className='text-sky-500'>Name:</span> {data.name}
+                </h1>
+                <h1>
+                  <span className='text-sky-500'>Phone No.:</span> {data.phone}
+                </h1>
+                <h1>
+                  <span className='text-sky-500'>Address:</span> {data.address}
+                </h1>
+              </div>
+            ))
+          )
+        )}
+      </div>
+    </>
+  );
 }
 
 export default DetailCard
