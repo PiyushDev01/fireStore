@@ -6,4 +6,9 @@ body {
   font-family: 'Nunito', sans-serif;
     background-color: rgb(38, 41, 43);
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    
 }
