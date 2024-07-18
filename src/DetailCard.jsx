@@ -30,8 +30,8 @@ function DetailCard() {
 
   return (
     <>
-    <button className='bg-blue-700 rounded-xl py-2 px-4 m-2' onClick={getData} >Fetch data </button>
-    { !data ? null : (<button className='bg-blue-700 rounded-xl py-2 px-4 m-2' onClick={hidedata} >hide data </button>)}
+
+    { !data ?     <button className='bg-blue-700 rounded-xl py-2 px-4 m-2' onClick={getData} >Fetch data </button>gi : (<button className='bg-blue-700 rounded-xl py-2 px-4 m-2' onClick={hidedata} >hide data </button>)}
 
     <div id="datacontainer" className=' flex justify-center flex-wrap ' >
     {
