@@ -33,14 +33,14 @@ return (
 
     { !data ?     <button className='bg-blue-700 rounded-xl py-2 px-4 m-2' onClick={getData} >Fetch data </button> : (<button className='bg-blue-700 rounded-xl py-2 px-4 m-2' onClick={hidedata} >hide data </button>)}
 
-    <div id="datacontainer" className=' flex justify-center flex-wrap ' >
+    <div id="datacontainer" className=' md:m-8 flex justify-center flex-wrap ' >
     {
         fetchData.map((data)=>{
             return (
-                <div key={data.id} className='m-2 p-4 text-left  bg-sky-500 text-slate-800 min-w-60 min-h-32 flex flex-col justify-center rounded-lg'>
-                    <h1>Name:  {data.name}</h1> 
-                    <h1> Phone No.: {data.phone}</h1>
-                    <h1 >Address: {data.address}</h1>
+                <div key={data.id} className='m-2 p-4 text-left shadow-xl  bg-zinc-900 text-slate-100 md:min-w-60 md:w-fit w-[80%] md:min-h-32 flex flex-col justify-center rounded-lg'>
+                    <h1 className=' text-orange-500'> <span className=' text-sky-500' >Name:</span>   {data.name}</h1> 
+                    <h1> <span className=' text-sky-500' >Phone No.:</span>  {data.phone}</h1>
+                    <h1> <span className=' text-sky-500' >Address:</span>  {data.address}</h1>
                 </div>
             )})
         }
