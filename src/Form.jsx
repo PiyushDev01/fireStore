@@ -45,7 +45,7 @@ function Form() {
   };
 
   return (
-    <div id="formContainer" className="w-[20rem] flex flex-col">
+    <div id="formContainer" className="w-[20rem] mt-20 flex flex-col">
       <div id="profile" className="flex justify-between">
       {!loading && <img src={loginPhoto} className="mx-4 w-10 rounded-full" alt="Profile" />}
         <button className="bg-blue-700 w-fit rounded-xl py-2 px-4" onClick={signout}>

@@ -10,7 +10,7 @@ const {name,email, profile} = props
             <img src={profile} className={`w-12 h-12 bg-slate-800  rounded-full`}   alt="null" />
             <div id="i1">
                 <h1 className=' text-orange-500'>{name}</h1>
-                <h1>{email}</h1>
+                <h1 className=' text-sm text-slate-300'>{email}</h1>
             </div>
         </div>
     </div>

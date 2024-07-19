@@ -27,7 +27,7 @@ function DetailCard() {
     <>
       <center>
         {!loading && <Link to="/form">
-          <button className='w-fit px-4 py-2 md:mb-0 mb-4 bg-slate-900 rounded-full shadow-xl'>
+          <button className='w-fit px-4 py-2 mt-10 md:mb-0 mb-4 bg-slate-900 rounded-full shadow-xl'>
             Back
           </button>
         </Link>}
@@ -35,7 +35,7 @@ function DetailCard() {
 
       <div id="datacontainer" className='md:m-8 flex justify-center flex-wrap'>
         {loading ? (
-          <h1>Loading...</h1>
+          <h1 className=' mt-80'>Loading...</h1>
         ) : (
           fetchData.length === 0 ? (
             <h1>No data available.</h1>

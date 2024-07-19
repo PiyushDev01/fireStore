@@ -27,7 +27,8 @@ function Login() {
   return (
     <>
     {
-       isuser ? navigate('/form') :<div id="container">
+       isuser ? navigate('/form') :<div id="container" className=' flex flex-col h-full items-center justify-center'>
+        
        <h1 className=' font-mono text-3xl p-4 m-2 font-semibold text-center' >Login</h1>
        <div id="googlebox">
            <button className='bg-blue-700 rounded-xl py-2 px-4 m-2' onClick={handlegoogleLogin}>Login with Google</button>

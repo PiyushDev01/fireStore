@@ -28,9 +28,9 @@ function UserCard() {
     }, []); 
     return (
     <>
-    <center><Link to="/form"><button className='w-fit px-4 py-2 md:mb-0 mb-4 bg-slate-900 rounded-full shadow-xl'>back</button></Link></center>
+    <center><Link to="/form"><button className='w-fit px-4 py-2 mt-20 md:mb-0 mb-4 bg-slate-900 rounded-full shadow-xl'>back</button></Link></center>
     {
-        loading ? <h1>Loading...</h1> : fetchData.length === 0 ? <h1>No data available.</h1> : fetchData.map((data) => (
+        loading ? <h1 className=' mt-40'>Loading...</h1> : fetchData.length === 0 ? <h1>No data available.</h1> : fetchData.map((data) => (
             <Userlogincard key={data.id} name={data.name} email={data.email} profile={data.photo} />
         ))
     }
