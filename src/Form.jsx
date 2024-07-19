@@ -47,7 +47,7 @@ function Form() {
   return (
     <div id="formContainer" className="w-[20rem] flex flex-col">
       <div id="profile" className="flex justify-between">
-        <img src={loginPhoto} className="mx-4 w-10 rounded-full" alt="Profile" />
+      {!loading && <img src={loginPhoto} className="mx-4 w-10 rounded-full" alt="Profile" />}
         <button className="bg-blue-700 w-fit rounded-xl py-2 px-4" onClick={signout}>
           Sign Out
         </button>
@@ -85,9 +85,13 @@ function Form() {
         {loading ? "Submitting..." : "Submit"}
       </button>
       {admin ? (
-        <button className="bg-blue-700 rounded-xl m-2 py-2 px-4" onClick={()=>{navigate("/detail")}}>
+        <><button className="bg-indigo-700 rounded-xl m-2 py-2 px-4" onClick={() => { navigate("/detail"); } }>
           See Details
-        </button>):(<button className="bg-blue-700 rounded-xl m-2 py-2 px-4" onClick={()=>{alert("Gain premium access to view all data feeds.")}}>
+        </button><button className="bg-purple-700 rounded-xl m-2 py-2 px-4" onClick={() => { navigate("/users"); } }>
+            See Users
+          </button></>
+      
+      ):(<button className="bg-green-700 rounded-xl m-2 py-2 px-4" onClick={()=>{alert("Gain premium access to view all data feeds.")}}>
           Premium
         </button>
       )}

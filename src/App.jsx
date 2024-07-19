@@ -5,6 +5,7 @@ import DetailCard from './DetailCard'
 import Login from './Login'
 import ProtectedRoutes from './ProtectedRoutes'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import UserCard from './UserCard'
 
 function App() {
  
@@ -19,6 +20,7 @@ function App() {
       <Route element={<ProtectedRoutes/>} >
         <Route path='form' element={<Form />} />
         <Route path='detail' element={<DetailCard />} />
+        <Route path='users' element={<UserCard />} />
       </Route>
     </Routes>
     </>

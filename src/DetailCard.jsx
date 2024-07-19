@@ -26,11 +26,11 @@ function DetailCard() {
   return (
     <>
       <center>
-        <Link to="/form">
-          <button className='w-fit px-4 py-2 bg-slate-900 rounded-full shadow-xl'>
+        {!loading && <Link to="/form">
+          <button className='w-fit px-4 py-2 md:mb-0 mb-4 bg-slate-900 rounded-full shadow-xl'>
             Back
           </button>
-        </Link>
+        </Link>}
       </center>
 
       <div id="datacontainer" className='md:m-8 flex justify-center flex-wrap'>
@@ -50,6 +50,9 @@ function DetailCard() {
                 </h1>
                 <h1>
                   <span className='text-sky-500'>Address:</span> {data.address}
+                </h1>
+                <h1>
+                  <span className='text-green-500'>Filled by:</span> {data.feededby}
                 </h1>
               </div>
             ))
